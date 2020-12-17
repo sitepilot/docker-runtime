@@ -73,9 +73,9 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 
 # ----- Wordmove ----- #
 
-RUN install-packages ruby \
-    && gem install --no-user-install wordmove \
-    && wordmove --version
+#RUN install-packages ruby \
+#    && gem install --no-user-install wordmove \
+#    && wordmove --version
 
 # ----- Webhook ----- #
 
