@@ -109,12 +109,12 @@ accessControl  {
 
 extprocessor lsphp {
   type                    lsapi
-  address                 uds://tmp/lshttpd/lsphp.sock
+  address                 127.0.0.1:9001
   initTimeout             60
   retryTimeout            0
   persistConn             1
   respBuffer              0
-  autoStart               1
+  autoStart               0
   path                    lsphp74/bin/lsphp
   backlog                 100
   instances               1

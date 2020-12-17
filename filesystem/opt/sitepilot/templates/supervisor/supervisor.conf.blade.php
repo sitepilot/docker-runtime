@@ -23,6 +23,16 @@ stdout_logfile_maxbytes=0
 stderr_logfile = /dev/stderr
 stderr_logfile_maxbytes=0
 
+[program:lsphp]
+command = /usr/local/lsws/lsphp74/bin/lsphp -b 127.0.0.1:9001
+process_name = lsphp
+autorestart=true
+stopasgroup=true
+stdout_logfile = /dev/stdout
+stdout_logfile_maxbytes=0
+stderr_logfile = /dev/stderr
+stderr_logfile_maxbytes=0
+
 @if($ssh['enabled'])
 [program:sshd]
 command=/usr/sbin/sshd -D -f /opt/sitepilot/etc/sshd/sshd_config -e
