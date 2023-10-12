@@ -42,7 +42,7 @@ Example implementations:
 | `/runtime/bin/cmd`              | Default `CMD` script which executes each script in the `command.d` folder before running the command given as parameter.           |
 | `/runtime/bin/entrypoint`       | Default `ENTRYPOINT` script which executes each script in the `entrypoint.d` folder before running the command given as parameter. |
 | `/runtime/bin/finalize`         | Restores file permissions after a container build.                                                                                 |
-| `/runtime/bin/install`          | Installs apt-packages and cleans up cache.                                                                                         |
+| `/runtime/bin/install`          | Installs packages and clean up cache.                                                                                              |
 | `/runtime/command.d/10-logo.sh` | Displays the logo on container start.                                                                                              |
 | `/runtime/command.d/20-info.sh` | Displays container info on container start.                                                                                        |
 | `/runtime/command.d/30-info.sh` | Initializes applications folders.                                                                                                  |
