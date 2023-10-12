@@ -33,4 +33,4 @@ WORKDIR $RUNTIME_WORKDIR
 
 ENTRYPOINT ["/runtime/bin/entrypoint"]
 
-CMD ["/runtime/bin/command"]
+CMD ["/runtime/bin/cmd"]
