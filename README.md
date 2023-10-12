@@ -2,6 +2,11 @@
 
 This image is used as a base image for all of our Docker images.
 
+Example implementations:
+
+* https://github.com/sitepilot/docker-php
+* https://github.com/sitepilot/docker-lsphp
+
 ## Filesystem
 
 ### Application
