@@ -16,8 +16,8 @@ FROM ghcr.io/sitepilot/runtime:1.x bash
 
 Example implementations:
 
-* https://github.com/sitepilot/docker-php
-* https://github.com/sitepilot/docker-lsphp
+* [https://github.com/sitepilot/docker-php](https://github.com/sitepilot/docker-php/blob/1.x/src/Dockerfile)
+* [https://github.com/sitepilot/docker-lsphp](https://github.com/sitepilot/docker-lsphp/blob/1.x/src/Dockerfile)
 
 ## Filesystem
 
