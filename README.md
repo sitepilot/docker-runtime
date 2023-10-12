@@ -9,37 +9,23 @@ Example implementations:
 
 ## Filesystem
 
-### Application
-
-ℹ️ The `/app` folder may be mounted to a volume to persist data between container restarts.
-
-#### Folders
-
-| Folder        | Description                                                           |
-|---------------|-----------------------------------------------------------------------|
-| `/app/files`  | Contains application files (e.g. a WordPress, Laravel or NodeJS app). |
-| `/app/logs`   | Contains application log / debug files (e.g. a PHP-debug log).        |
-| `/app/config` | Contains application config files (e.g. a webserver SSL-certificate). |
-
-### Runtime
-
 ⚠️ The `/runtime` folder should **never** be mounted to a volume.
 
-#### Folders
+### Folders
 
 | Folder                  | Description                                                                            |
 |-------------------------|----------------------------------------------------------------------------------------|
-| `/runtime/bin`          | Contains executable files for building and running the container.                      |
+| `/runtime/bin`          | Contains executable files used for building and running the container.                 |
 | `/runtime/command.d`    | Each file in this folder is executed before the default container command is executed. |
 | `/runtime/entrypoint.d` | Each file in this folder is executed before the container command is executed.         |
-| `/runtime/inc`          | Contains helper files for generating templates and running scripts.                    |
-| `/runtime/logs`         | Contains temporary log files which are removed on every container restart.             |
-| `/runtime/run`          | Contains service pid-files which are removed on every container restart.               |
-| `/runtime/run`          | Contains service templates which will be generated on container startup.               |
+| `/runtime/inc`          | Contains helper files for bash scripts an generating templates.                        |
+| `/runtime/logs`         | Contains service log files.                                                            |
+| `/runtime/run`          | Contains service pid-files.                                                            |
+| `/runtime/run`          | Contains service templates.                                                            |
 
-#### Files
+### Files
 
-| Folder                          | Description                                                                          |
+| File                            | Description                                                                          |
 |---------------------------------|--------------------------------------------------------------------------------------|
 | `/runtime/bin/command`          | Default `CMD` script which executes each script in the `command.d` folder.           |
 | `/runtime/bin/entrypoint`       | Default `ENTRYPOINT` script which executes each script in the `entrypoint.d` folder. |
@@ -55,10 +41,6 @@ Example implementations:
 
 | Folder                   | Description                                |
 |--------------------------|--------------------------------------------|
-| `APP_DIR`                | Path to the application folder.            |
-| `APP_LOGS_DIR`           | Path to the application `logs` folder.     |
-| `APP_FILES_DIR`          | Path to the application `files` folder.    |
-| `APP_CONFIG_DIR`         | Path to the application `config` folder.   |
 | `RUNTIME_UID`            | The ID of the container user.              |
 | `RUNTIME_GID`            | The ID of the container user group.        |
 | `RUNTIME_USER`           | The name of the container user.            |
