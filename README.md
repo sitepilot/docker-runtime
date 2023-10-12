@@ -1,6 +1,4 @@
-# Docker Runtime Image
-
-An optimized docker image for running an application or service in production.
+An optimized Docker image for running applications and services in production.
 
 Example implementations:
 
@@ -46,17 +44,17 @@ ghcr.io/sitepilot/runtime:1.x
 
 ## Environment
 
-| Folder                   | Description                                |
-|--------------------------|--------------------------------------------|
-| `RUNTIME_UID`            | The ID of the container user.              |
-| `RUNTIME_GID`            | The ID of the container user group.        |
-| `RUNTIME_USER`           | The name of the container user.            |
-| `RUNTIME_GROUP`          | The name of the container user group.      |
-| `RUNTIME_DIR`            | Path to the runtime folder.                |
-| `RUNTIME_BIN_DIR`        | Path to the runtime `bin` folder.          |
-| `RUNTIME_INC_DIR`        | Path to the runtime `inc` folder.          |
-| `RUNTIME_RUN_DIR`        | Path to the runtime `run` folder.          |
-| `RUNTIME_LOGS_DIR`       | Path to the runtime `logs` folder.         |
-| `RUNTIME_TEMPLATES_DIR`  | Path to the runtime `templates` folder.    |
-| `RUNTIME_COMMAND_DIR`    | Path to the runtime `command.d` folder.    |
-| `RUNTIME_ENTRYPOINT_DIR` | Path to the runtime `entrypoint.d` folder. |
+| Folder                   | Value                   | Description                                |
+|--------------------------|-------------------------|--------------------------------------------|
+| `RUNTIME_UID`            | `1000`                  | The ID of the container user.              |
+| `RUNTIME_GID`            | `1000`                  | The ID of the container user group.        |
+| `RUNTIME_USER`           | `app`                   | The name of the container user.            |
+| `RUNTIME_GROUP`          | `app`                   | The name of the container user group.      |
+| `RUNTIME_DIR`            | `/runtime`              | Path to the runtime folder.                |
+| `RUNTIME_BIN_DIR`        | `/runtime/bin`          | Path to the runtime `bin` folder.          |
+| `RUNTIME_INC_DIR`        | `/runtime/inc`          | Path to the runtime `inc` folder.          |
+| `RUNTIME_RUN_DIR`        | `/runtime/run`          | Path to the runtime `run` folder.          |
+| `RUNTIME_LOGS_DIR`       | `/runtime/logs`         | Path to the runtime `logs` folder.         |
+| `RUNTIME_TEMPLATES_DIR`  | `/runtime/templates`    | Path to the runtime `templates` folder.    |
+| `RUNTIME_COMMAND_DIR`    | `/runtime/command.d`    | Path to the runtime `command.d` folder.    |
+| `RUNTIME_ENTRYPOINT_DIR` | `/runtime/entrypoint.d` | Path to the runtime `entrypoint.d` folder. |
