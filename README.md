@@ -1,11 +1,17 @@
 # Docker Runtime Image
 
-This image is used as a base image for all of our Docker images.
+An optimized docker image for running an application or service in production.
 
 Example implementations:
 
 * https://github.com/sitepilot/docker-php
 * https://github.com/sitepilot/docker-lsphp
+
+## Image
+
+```
+ghcr.io/sitepilot/runtime:1.x
+```
 
 ## Filesystem
 
@@ -25,17 +31,18 @@ Example implementations:
 
 ### Files
 
-| File                            | Description                                                                          |
-|---------------------------------|--------------------------------------------------------------------------------------|
-| `/runtime/bin/command`          | Default `CMD` script which executes each script in the `command.d` folder.           |
-| `/runtime/bin/entrypoint`       | Default `ENTRYPOINT` script which executes each script in the `entrypoint.d` folder. |
-| `/runtime/bin/finalize`         | Resets file permissions after container build.                                       |
-| `/runtime/bin/install`          | Installs apt-packages and cleans up cache.                                           |
-| `/runtime/command.d/10-logo.sh` | Displays the logo on container start.                                                |
-| `/runtime/command.d/20-info.sh` | Displays container info on container start.                                          |
-| `/runtime/command.d/30-info.sh` | Initializes applications folders.                                                    |
-| `/runtime/inc/bash-functions`   | Contains useful bash functions.                                                      |
-| `/runtime/inc/template-filters` | Contains useful template filters.                                                    |
+| File                            | Description                                                                                                               |
+|---------------------------------|---------------------------------------------------------------------------------------------------------------------------|
+| `/runtime/bin/command`          | Default `CMD` script which executes each script in the `command.d` folder.                                                |
+| `/runtime/bin/entrypoint`       | Default `ENTRYPOINT` script which executes each script in the `entrypoint.d` folder before running the container command. |
+| `/runtime/bin/finalize`         | Restores file permissions after a container build.                                                                        |
+| `/runtime/bin/install`          | Installs apt-packages and cleans up cache.                                                                                |
+| `/runtime/command.d/10-logo.sh` | Displays the logo on container start.                                                                                     |
+| `/runtime/command.d/20-info.sh` | Displays container info on container start.                                                                               |
+| `/runtime/command.d/30-info.sh` | Initializes applications folders.                                                                                         |
+| `/runtime/inc/bash-functions`   | Contains useful bash functions.                                                                                           |
+| `/runtime/inc/template-filters` | Contains useful template filters.                                                                                         |
+| `/runtime/cmd`                  | Contains the main container command (similar to CMD in a Dockerfile)                                                      |
 
 ## Environment
 
