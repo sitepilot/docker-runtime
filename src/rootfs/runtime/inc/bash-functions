@@ -29,8 +29,8 @@ function template()
 
 function generate_certs()
 {
-  if [ ! -f $APP_CONFIG_DIR/ssl.key ]; then
+  if [ ! -f $RUNTIME_WORKDIR/ssl.key ]; then
     log "Generating self-signed SSL certificate"
-    openssl req -x509 -subj "/C=NL/ST=Gelderland/L=Doetinchem/O=Sitepilot/CN=app.test" -nodes -newkey rsa:2048 -keyout $APP_CONFIG_DIR/ssl.key -out $APP_CONFIG_DIR/ssl.crt -days 365 > /dev/null
+    openssl req -x509 -subj "/C=NL/ST=Gelderland/L=Doetinchem/O=Sitepilot/CN=app.test" -nodes -newkey rsa:2048 -keyout $RUNTIME_WORKDIR/ssl.key -out $RUNTIME_WORKDIR/ssl.crt -days 365 > /dev/null
   fi
 }
