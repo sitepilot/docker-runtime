@@ -7,7 +7,7 @@ Example implementations:
 * https://github.com/sitepilot/docker-php
 * https://github.com/sitepilot/docker-lsphp
 
-## Image
+## Docker Image
 
 ```
 ghcr.io/sitepilot/runtime:1.x
