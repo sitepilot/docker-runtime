@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -e
+set -u
+
+source $RUNTIME_INC_DIR/bash-functions
+
+for file in $RUNTIME_COMMAND_DIR/*.sh; do
+  if [ -f $file ]; then
+    source "$file"
+  fi
+done
+
+if [ -f "/runtime/cmd" ]; then
+  source "/runtime/cmd"
+else
+  throw "No command specified!"
+fi

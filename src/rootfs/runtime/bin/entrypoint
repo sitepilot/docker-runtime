@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -e
+set -u
+
+source $RUNTIME_INC_DIR/bash-functions
+
+for f in $RUNTIME_ENTRYPOINT_DIR/*.sh; do
+  if [ -f $f ]; then
+    source "$f"
+  fi
+done
+
+exec "$@"

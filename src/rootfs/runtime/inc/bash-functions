@@ -1,0 +1,36 @@
+#!/bin/bash
+
+function to_bool()
+{
+  if [[ $1 == 'true' || $1 == true || $1 == 1 || $1 == 'Y' || $1 == 'y' ]]; then
+    true
+  else
+    false
+  fi
+}
+
+function log()
+{
+  echo "⚡ $1..." >&2
+}
+
+function throw()
+{
+  EXIT_CODE=${2:-1}
+  echo "x $1" 1>&2
+  exit $EXIT_CODE
+}
+
+function template()
+{
+  log "Generating $2"
+  j2 --undefined --filters=$RUNTIME_INC_DIR/template-filters.py $RUNTIME_TEMPLATES_DIR/$1 > $2
+}
+
+function generate_certs()
+{
+  if [ ! -f $APP_CONFIG_DIR/ssl.key ]; then
+    log "Generating self-signed SSL certificate"
+    openssl req -x509 -subj "/C=NL/ST=Gelderland/L=Doetinchem/O=Sitepilot/CN=app.test" -nodes -newkey rsa:2048 -keyout $APP_CONFIG_DIR/ssl.key -out $APP_CONFIG_DIR/ssl.crt -days 365 > /dev/null
+  fi
+}

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -e
+set -u
+
+chown -R $RUNTIME_UID:$RUNTIME_GID $RUNTIME_DIR $APP_DIR;
