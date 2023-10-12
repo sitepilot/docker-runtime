@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - 1.x
+    paths:
+      - 'src/**'
   schedule:
     - cron: '0 0 * * *'
   pull_request:
@@ -11,13 +13,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-22.04
-
-    env:
-      DOCKER_TAGS: |
-        ghcr.io/sitepilot/runtime:1.x,
-        ghcr.io/sitepilot/runtime:latest
-      DOCKER_PULL_TAGS: |
-        ghcr.io/sitepilot/runtime:pull-${{ github.event.pull_request.number }}
 
     steps:
       - name: Checkout code
@@ -36,12 +31,15 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Get branch name
+        run: echo "BRANCH=${GITHUB_REF##*/}" >> $GITHUB_ENV
+
       - name: Build and push image
         uses: docker/build-push-action@v5
         with:
           context: ./src
-          push: true
-          tags: ${{ github.event_name == 'pull_request' && env.PULL_TAGS || env.DOCKER_TAGS }}
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ghcr.io/sitepilot/runtime:${{ env.BRANCH }}
           platforms: linux/amd64, linux/arm64
           provenance: false
           cache-from: type=gha
