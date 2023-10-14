@@ -11,4 +11,6 @@ for file in "$RUNTIME_ENTRYPOINT_DIR"/*; do
   fi
 done
 
+touch $RUNTIME_BOOTED_FILE
+
 exec "$@"

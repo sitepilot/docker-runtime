@@ -65,3 +65,4 @@ Example implementations:
 | `RUNTIME_TEMPLATES_DIR`  | `/runtime/templates`    | Path to the runtime `templates` folder.    |
 | `RUNTIME_COMMAND_DIR`    | `/runtime/command.d`    | Path to the runtime `command.d` folder.    |
 | `RUNTIME_ENTRYPOINT_DIR` | `/runtime/entrypoint.d` | Path to the runtime `entrypoint.d` folder. |
+| `RUNTIME_BOOTED_FILE`    | `/runtime/booted`       | Path to the runtime `booted` file.         |
