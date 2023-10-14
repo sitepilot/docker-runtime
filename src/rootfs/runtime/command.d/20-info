@@ -5,7 +5,7 @@ echo "
 Runtime Info
 -------------------------------------
 User:       ${RUNTIME_USER} (uid: $(id -u $RUNTIME_USER))
-Group:      ${RUNTIME_GROUP} (gid: $(id -g $RUNTIME_GROUP))
+Group:      ${RUNTIME_GROUP} (gid: $(id -g $RUNTIME_USER))
 Workdir:    ${RUNTIME_WORKDIR}
 -------------------------------------
 "
