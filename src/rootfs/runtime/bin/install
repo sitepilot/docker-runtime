@@ -22,7 +22,7 @@ until [ $n -gt $max ]; do
     if [ $n -eq $max ]; then
         exit $CODE
     fi
-    echo "apt failed, retrying"
+    echo "Apt install failed, retrying..."
     n=$(($n + 1))
 done
 
