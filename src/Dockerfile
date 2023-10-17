@@ -1,6 +1,6 @@
 FROM ubuntu:22.04
 
-ARG BUILDARCH="amd64"
+ARG TARGETARCH
 ARG DOCKERIZE_VERSION=v0.7.0
 
 LABEL maintainer="@sitepilot"
@@ -27,7 +27,7 @@ ADD ./rootfs/runtime/bin/install $RUNTIME_BIN_DIR/install
 RUN $RUNTIME_BIN_DIR/install curl wget nano ca-certificates \
     && groupadd -r -g ${RUNTIME_GID} ${RUNTIME_GROUP} \
     && useradd --no-log-init -r -s /usr/bin/bash -m -d ${RUNTIME_WORKDIR} -u ${RUNTIME_UID} -g ${RUNTIME_GID} ${RUNTIME_USER} \
-    && wget -O - https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-$BUILDARCH-$DOCKERIZE_VERSION.tar.gz | tar xzf - -C /usr/local/bin
+    && wget -O - https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-$TARGETARCH-$DOCKERIZE_VERSION.tar.gz | tar xzf - -C /usr/local/bin
 
 COPY rootfs /
 
