@@ -1,5 +1,8 @@
 FROM ubuntu:22.04
 
+ARG BUILDARCH="amd64"
+ARG DOCKERIZE_VERSION=v0.7.0
+
 LABEL maintainer="@sitepilot"
 
 ENV DEBIAN_FRONTEND="noninteractive" \
@@ -8,6 +11,7 @@ ENV DEBIAN_FRONTEND="noninteractive" \
     RUNTIME_USER=app \
     RUNTIME_GROUP=app \
     RUNTIME_PASSWORD="" \
+    RUNTIME_LOG_LEVEL=2 \
     RUNTIME_DIR=/runtime \
     RUNTIME_WORKDIR=/app \
     RUNTIME_BIN_DIR=/runtime/bin \
@@ -15,15 +19,15 @@ ENV DEBIAN_FRONTEND="noninteractive" \
     RUNTIME_RUN_DIR=/runtime/run \
     RUNTIME_LOGS_DIR=/runtime/logs \
     RUNTIME_TEMPLATES_DIR=/runtime/templates \
-    RUNTIME_COMMAND_DIR=/runtime/command.d \
     RUNTIME_ENTRYPOINT_DIR=/runtime/entrypoint.d \
     RUNTIME_BOOTED_FILE=/runtime/booted
 
 ADD ./rootfs/runtime/bin/install $RUNTIME_BIN_DIR/install
 
-RUN $RUNTIME_BIN_DIR/install j2cli; \
+RUN $RUNTIME_BIN_DIR/install curl wget nano ca-certificates; \
     groupadd -r -g ${RUNTIME_GID} ${RUNTIME_GROUP}; \
-    useradd --no-log-init -r -s /usr/bin/bash -m -d ${RUNTIME_WORKDIR} -u ${RUNTIME_UID} -g ${RUNTIME_GID} ${RUNTIME_USER}
+    useradd --no-log-init -r -s /usr/bin/bash -m -d ${RUNTIME_WORKDIR} -u ${RUNTIME_UID} -g ${RUNTIME_GID} ${RUNTIME_USER}; \
+    wget -O - https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-$BUILDARCH-$DOCKERIZE_VERSION.tar.gz | tar xzf - -C /usr/local/bin
 
 COPY rootfs /
 
@@ -34,5 +38,3 @@ USER $RUNTIME_UID
 WORKDIR $RUNTIME_WORKDIR
 
 ENTRYPOINT ["/runtime/bin/entrypoint"]
-
-CMD ["/runtime/bin/cmd"]

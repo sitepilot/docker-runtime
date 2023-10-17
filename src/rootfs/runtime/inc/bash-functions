@@ -9,9 +9,32 @@ function to_bool()
   fi
 }
 
-function log()
+function debug()
 {
-  echo "⚡ $1..." >&2
+  if [ "$RUNTIME_LOG_LEVEL" -eq 1 ]; then
+    echo "⚡ $1..." >&2
+  fi
+}
+
+function info()
+{
+  if [ "$RUNTIME_LOG_LEVEL" -le 2 ]; then
+    echo "ℹ️ $1..." >&2
+  fi
+}
+
+function warning()
+{
+  if [ "$RUNTIME_LOG_LEVEL" -le 3 ]; then
+    echo "⚠️ $1..." >&2
+  fi
+}
+
+function error()
+{
+  if [ "$RUNTIME_LOG_LEVEL" -le 4 ]; then
+    echo "❗ $1..." >&2
+  fi
 }
 
 function throw()
@@ -23,14 +46,14 @@ function throw()
 
 function template()
 {
-  log "Generating $2"
-  j2 --undefined --filters=$RUNTIME_INC_DIR/template-filters.py $RUNTIME_TEMPLATES_DIR/$1 > $2
+  info "Generating $1 to $2"
+  dockerize -template $RUNTIME_TEMPLATES_DIR/$1:$2
 }
 
 function generate_certs()
 {
-  if [ ! -f $RUNTIME_WORKDIR/ssl.key ]; then
-    log "Generating self-signed SSL certificate"
-    openssl req -x509 -subj "/C=NL/ST=Gelderland/L=Doetinchem/O=Sitepilot/CN=app.test" -nodes -newkey rsa:2048 -keyout $RUNTIME_WORKDIR/ssl.key -out $RUNTIME_WORKDIR/ssl.crt -days 365 > /dev/null
+  if [ ! -f $1/ssl.key ]; then
+    info "Generating self-signed SSL certificate to $1"
+    openssl req -x509 -subj "/C=NL/ST=Gelderland/L=Doetinchem/O=Sitepilot/CN=app.test" -nodes -newkey rsa:2048 -keyout $1/ssl.key -out $1/ssl.crt -days 365 > /dev/null
   fi
 }
