@@ -30,7 +30,7 @@ if [ "$EUID" -eq 0 ]; then
     fi
   fi
 
-  source $RUNTIME_BIN_DIR/finalize
+  rt-finalize
 else
   if [[ $RUNTIME_USER != "app" ]] \
   || [[ $RUNTIME_GROUP != "app" ]] \

@@ -12,35 +12,35 @@ function to_bool()
 function debug()
 {
   if [ "$RUNTIME_LOG_LEVEL" -eq 1 ]; then
-    echo "⚡ $1..." >&2
+    echo "✳️ $1" >&2
   fi
 }
 
 function info()
 {
   if [ "$RUNTIME_LOG_LEVEL" -le 2 ]; then
-    echo "ℹ️ $1..." >&2
+    echo "ℹ️ $1" >&2
   fi
 }
 
 function warning()
 {
   if [ "$RUNTIME_LOG_LEVEL" -le 3 ]; then
-    echo "⚠️ $1..." >&2
+    echo "⚠️ $1" >&2
   fi
 }
 
 function error()
 {
   if [ "$RUNTIME_LOG_LEVEL" -le 4 ]; then
-    echo "❗ $1..." >&2
+    echo "‼️ $1" 1>&2
   fi
 }
 
 function throw()
 {
   EXIT_CODE=${2:-1}
-  echo "x $1" 1>&2
+  echo "‼️ $1" 1>&2
   exit $EXIT_CODE
 }
 

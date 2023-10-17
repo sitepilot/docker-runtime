@@ -38,9 +38,9 @@ Example implementations:
 
 | File                               | Description                                                                                                           |
 |------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
-| `/runtime/bin/entrypoint`          | Default `ENTRYPOINT` script which executes each script in the `entrypoint.d` folder before running container command. |
-| `/runtime/bin/finalize`            | Restores file permissions after a container build.                                                                    |
-| `/runtime/bin/install`             | Installs packages and clean up cache.                                                                                 |
+| `/runtime/bin/runtime`             | Default `ENTRYPOINT` script which executes each script in the `entrypoint.d` folder before running container command. |
+| `/runtime/bin/rt-finalize`         | Restores file permissions after a container build.                                                                    |
+| `/runtime/bin/rt-install`          | Installs packages and clean up cache.                                                                                 |
 | `/runtime/entrypoint.d/10-init.sh` | Initialize the container user when running as root (e.g. name, group, password, uid, gid).                            |
 | `/runtime/entrypoint.d/20-logo.sh` | Displays the brand logo.                                                                                              |
 | `/runtime/entrypoint.d/30-info.sh` | Displays container info.                                                                                              |
@@ -56,7 +56,7 @@ Example implementations:
 | `RUNTIME_USER`           | `app`                   | The container user name.                                                       |
 | `RUNTIME_GROUP`          | `app`                   | The container user group.                                                      |
 | `RUNTIME_PASSWORD`       | -                       | The container user password.                                                   |
-| `RUNTIME_LOG_LEVEL`      | `2`                     | The container log level (`1` = debug, `2` = info, `3` = warning, `4` = error). |
+| `RUNTIME_LOG_LEVEL`      | `1`                     | The container log level (`1` = debug, `2` = info, `3` = warning, `4` = error). |
 | `RUNTIME_DIR`            | `/runtime`              | Path to the runtime folder.                                                    |
 | `RUNTIME_WORKDIR`        | `/app`                  | Path to the container workdir (application root).                              |
 | `RUNTIME_BIN_DIR`        | `/runtime/bin`          | Path to the runtime `bin` folder.                                              |

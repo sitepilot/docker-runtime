@@ -11,7 +11,7 @@ ENV DEBIAN_FRONTEND="noninteractive" \
     RUNTIME_USER=app \
     RUNTIME_GROUP=app \
     RUNTIME_PASSWORD="" \
-    RUNTIME_LOG_LEVEL=2 \
+    RUNTIME_LOG_LEVEL=1 \
     RUNTIME_DIR=/runtime \
     RUNTIME_WORKDIR=/app \
     RUNTIME_BIN_DIR=/runtime/bin \
@@ -22,19 +22,21 @@ ENV DEBIAN_FRONTEND="noninteractive" \
     RUNTIME_ENTRYPOINT_DIR=/runtime/entrypoint.d \
     RUNTIME_BOOTED_FILE=/runtime/booted
 
-ADD ./rootfs/runtime/bin/install $RUNTIME_BIN_DIR/install
+ENV PATH="$PATH:$RUNTIME_BIN_DIR"
 
-RUN $RUNTIME_BIN_DIR/install curl wget nano ca-certificates \
+ADD rootfs/runtime/bin/rt-install $RUNTIME_BIN_DIR/rt-install
+
+RUN rt-install curl wget nano ca-certificates \
     && groupadd -r -g ${RUNTIME_GID} ${RUNTIME_GROUP} \
     && useradd --no-log-init -r -s /usr/bin/bash -m -d ${RUNTIME_WORKDIR} -u ${RUNTIME_UID} -g ${RUNTIME_GID} ${RUNTIME_USER} \
     && wget -O - https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-$TARGETARCH-$DOCKERIZE_VERSION.tar.gz | tar xzf - -C /usr/local/bin
 
 COPY rootfs /
 
-RUN $RUNTIME_BIN_DIR/finalize
+RUN rt-finalize
 
 USER $RUNTIME_UID
 
 WORKDIR $RUNTIME_WORKDIR
 
-ENTRYPOINT ["/runtime/bin/entrypoint"]
+ENTRYPOINT ["runtime"]
