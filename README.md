@@ -36,16 +36,17 @@ Example implementations:
 
 ### Files
 
-| File                               | Description                                                                                                           |
-|------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
-| `/runtime/bin/runtime`             | Default `ENTRYPOINT` script which executes each script in the `entrypoint.d` folder before running container command. |
-| `/runtime/bin/rt-finalize`         | Restores file permissions after a container build.                                                                    |
-| `/runtime/bin/rt-install`          | Installs packages and clean up cache.                                                                                 |
-| `/runtime/entrypoint.d/10-init.sh` | Initialize the container user when running as root (e.g. name, group, password, uid, gid).                            |
-| `/runtime/entrypoint.d/20-logo.sh` | Displays the brand logo.                                                                                              |
-| `/runtime/entrypoint.d/30-info.sh` | Displays container info.                                                                                              |
-| `/runtime/inc/bash-functions`      | Contains useful bash functions.                                                                                       |
-| `/runtime/inc/template-filters`    | Contains useful template filters.                                                                                     |
+| File                               | Description                                                                                                                                                   |
+|------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `/runtime/bin/runtime`             | Default `ENTRYPOINT` script which executes each script in the `entrypoint.d` folder before running container command.                                         |
+| `/runtime/bin/rt-chown`            | Change the owner and group of a file (this allows services and scripts to access this file while running the container with a non-root user).                 |
+| `/runtime/bin/rt-rchown`           | Recursively change the owner and group of a folder (this allows services and scripts to access this folder while running the container with a non-root user). |
+| `/runtime/bin/rt-install`          | Installs packages and clean up cache.                                                                                                                         |
+| `/runtime/entrypoint.d/10-init.sh` | Initialize the container user when running as root (e.g. name, group, password, uid, gid).                                                                    |
+| `/runtime/entrypoint.d/20-logo.sh` | Displays the brand logo.                                                                                                                                      |
+| `/runtime/entrypoint.d/30-info.sh` | Displays container info.                                                                                                                                      |
+| `/runtime/inc/bash-functions`      | Contains useful bash functions.                                                                                                                               |
+| `/runtime/inc/template-filters`    | Contains useful template filters.                                                                                                                             |
 
 ## Environment
 

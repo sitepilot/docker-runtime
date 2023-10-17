@@ -31,9 +31,7 @@ RUN rt-install curl wget nano ca-certificates \
     && useradd --no-log-init -r -s /usr/bin/bash -m -d ${RUNTIME_WORKDIR} -u ${RUNTIME_UID} -g ${RUNTIME_GID} ${RUNTIME_USER} \
     && wget -O - https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-$TARGETARCH-$DOCKERIZE_VERSION.tar.gz | tar xzf - -C /usr/local/bin
 
-COPY rootfs /
-
-RUN rt-finalize
+COPY --chown=$RUNTIME_UID:$RUNTIME_GID rootfs /
 
 USER $RUNTIME_UID
 

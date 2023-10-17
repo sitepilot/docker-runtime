@@ -30,7 +30,8 @@ if [ "$EUID" -eq 0 ]; then
     fi
   fi
 
-  rt-finalize
+  rt-rchown $RUNTIME_DIR
+  rt-chown $RUNTIME_WORKDIR
 else
   if [[ $RUNTIME_USER != "app" ]] \
   || [[ $RUNTIME_GROUP != "app" ]] \
