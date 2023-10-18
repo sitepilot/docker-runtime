@@ -1,5 +1,5 @@
 services:
   runtime:
-    image: ghcr.io/sitepilot/runtime:1.x
+    image: ghcr.io/sitepilot/runtime:v1
     build:
       context: ./src

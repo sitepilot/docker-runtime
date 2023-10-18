@@ -1,20 +1,30 @@
 # Docker Runtime
 
-Docker Runtime is an optimized and extendable container image for developing application and service containers.
+Docker Runtime is an optimized and extendable Ubuntu container image for developing application and service containers.
 
-You can use the image directly, e.g.
+## Usage
 
-```
-docker run --rm -it ghcr.io/sitepilot/runtime:1.x bash
-```
+This repository creates several Docker images. Use the following image naming pattern to prevent breaking changes in your container builds:
 
-You can also use the images as a base for your own Dockerfile:
-
-```
-FROM ghcr.io/sitepilot/runtime:1.x bash
+```bash
+ghcr.io/sitepilot/runtime:{{runtime-version}}
 ```
 
-Example implementations:
+For example, if you wish to use **V1** (Ubuntu 22.04), use the following image name:
+
+```bash
+ghcr.io/sitepilot/runtime:v1
+```
+
+## Versions
+
+The following Runtime versions are available:
+
+* [v1](https://github.com/sitepilot/docker-runtime/tree/1.x) - Ubuntu 22.04 LTS
+
+## Examples
+
+You can find example implementations in the following repositories:
 
 * [https://github.com/sitepilot/docker-php](https://github.com/sitepilot/docker-php/blob/1.x/src/Dockerfile)
 * [https://github.com/sitepilot/docker-lsphp](https://github.com/sitepilot/docker-lsphp/blob/1.x/src/Dockerfile)
@@ -50,7 +60,9 @@ Example implementations:
 
 ## Environment
 
-| Folder                   | Value                   | Description                                                                    |
+The following environment variables are available:
+
+| Name                     | Value                   | Description                                                                    |
 |--------------------------|-------------------------|--------------------------------------------------------------------------------|
 | `RUNTIME_UID`            | `1000`                  | The ID of the container user.                                                  |
 | `RUNTIME_GID`            | `1000`                  | The ID of the container user group.                                            |
