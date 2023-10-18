@@ -3,7 +3,7 @@ FROM ubuntu:22.04
 ARG TARGETARCH
 ARG DOCKERIZE_VERSION=v0.7.0
 
-LABEL maintainer="@sitepilot"
+LABEL org.opencontainers.image.source = "https://github.com/sitepilot/docker-runtime"
 
 ENV DEBIAN_FRONTEND="noninteractive" \
     RUNTIME_UID=1000 \
