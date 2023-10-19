@@ -17,7 +17,7 @@ jobs:
     with:
       tests: |
         docker run ghcr.io/sitepilot/runtime:build id
-        docker run --user=root -e RUNTIME_PASSWORD=supersecret ghcr.io/sitepilot/runtime:build id
-        docker run --user=root -e RUNTIME_UID=1001 -e RUNTIME_GID=1001 ghcr.io/sitepilot/runtime:build id
-        docker run --user=root -e RUNTIME_USER=test-user -e RUNTIME_GROUP=test-group ghcr.io/sitepilot/runtime:build id
+        docker run --user=root -e RUNTIME_PASSWORD=supersecret ghcr.io/sitepilot/runtime:build id app
+        docker run --user=root -e RUNTIME_UID=1001 -e RUNTIME_GID=1001 ghcr.io/sitepilot/runtime:build id app
+        docker run --user=root -e RUNTIME_USER=test-user -e RUNTIME_GROUP=test-group ghcr.io/sitepilot/runtime:build id test-user
     secrets: inherit
