@@ -54,6 +54,6 @@ function generate_certs()
 {
   if [ ! -f $1/ssl.key ]; then
     info "Generating self-signed SSL certificate to $1"
-    openssl req -x509 -subj "/C=NL/ST=Gelderland/L=Doetinchem/O=Sitepilot/CN=app.test" -nodes -newkey rsa:2048 -keyout $1/ssl.key -out $1/ssl.crt -days 365 > /dev/null
+    openssl req -x509 -subj "/C=NL/ST=Gelderland/L=Doetinchem/O=Sitepilot/CN=app.test" -nodes -newkey rsa:2048 -keyout $1/ssl.key -out $1/ssl.crt -days 365 &> /dev/null
   fi
 }
