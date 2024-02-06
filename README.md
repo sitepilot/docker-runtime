@@ -10,24 +10,35 @@ This repository creates several Docker images. Use the following image naming pa
 ghcr.io/sitepilot/runtime:{{runtime-version}}
 ```
 
-For example, if you wish to use **V1** (Ubuntu 22.04), use the following image name:
+By subscribing to the **major** tag, you are guaranteed backward compatibility and get new features and fixes each 
+time you pull the image. By subscribing to the **major.minor** tag, you are guaranteed backward compatibility 
+and bug fixes, but will have to decide when to implement new features. Finally, by subscribing to the 
+**major.minor.patch** tag, you are guaranteed to always get the exact same image layer, excluding every update.
+
+For example, if you wish to use **version 1** (Ubuntu 22.04), use the following image name:
 
 ```bash
-ghcr.io/sitepilot/runtime:v1
+ghcr.io/sitepilot/runtime:1
+```
+
+If you wish to only include bug fixes, use the following image name:
+
+```bash
+ghcr.io/sitepilot/runtime:1.0
 ```
 
 ## Versions
 
 The following Runtime versions are available:
 
-* [v1](https://github.com/sitepilot/docker-runtime/tree/1.x) - Ubuntu 22.04 LTS
+* [1.x](https://github.com/sitepilot/docker-runtime/tree/1.x) - Ubuntu 22.04 LTS
 
 ## Examples
 
 You can find example implementations in the following repositories:
 
 * [https://github.com/sitepilot/docker-php](https://github.com/sitepilot/docker-php/blob/1.x/src/Dockerfile)
-* [https://github.com/sitepilot/docker-lsphp](https://github.com/sitepilot/docker-lsphp/blob/1.x/src/Dockerfile)
+* [https://github.com/sitepilot/docker-proxy](https://github.com/sitepilot/docker-proxy/blob/1.x/src/Dockerfile)
 
 ## Filesystem
 
