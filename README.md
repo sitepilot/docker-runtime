@@ -5,7 +5,7 @@ Docker Runtime is an optimized and extendable Ubuntu container image for develop
 ## Usage
 
 To use this image as a base image and avoid potential breaking changes in your container builds, use the following 
-image naming pattern in your`Dockerfile`:
+image naming pattern in your `Dockerfile`:
 
 ```Dockerfile
 FROM ghcr.io/sitepilot/runtime:{{release-version}}
