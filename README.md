@@ -4,27 +4,28 @@ Docker Runtime is an optimized and extendable Ubuntu container image for develop
 
 ## Usage
 
-This repository creates several Docker images. Use the following image naming pattern to prevent breaking changes in your container builds:
+To use this image as a base image and avoid potential breaking changes in your container builds, use the following 
+image naming pattern in your`Dockerfile`:
 
-```bash
-ghcr.io/sitepilot/runtime:{{runtime-version}}
+```Dockerfile
+FROM ghcr.io/sitepilot/runtime:{{release-version}}
 ```
 
-By subscribing to the **major** tag, you are guaranteed backward compatibility and get new features and fixes each 
-time you pull the image. By subscribing to the **major.minor** tag, you are guaranteed backward compatibility 
-and bug fixes, but will have to decide when to implement new features. Finally, by subscribing to the 
-**major.minor.patch** tag, you are guaranteed to always get the exact same image layer, excluding every update.
+The images are tagged according to Semantic Versioning (SemVer). Available releases can be found on the [releases page](/releases). For example, if you wish to customize version 1.x of the image:
 
-For example, if you wish to use **version 1** (Ubuntu 22.04), use the following image name:
-
-```bash
-ghcr.io/sitepilot/runtime:1
+```Dockerfile
+# Guaranteed backward compatibility, new features and bug fixes.
+FROM ghcr.io/sitepilot/runtime:1
 ```
 
-If you wish to only include bug fixes, use the following image name:
+```Dockerfile
+# Guaranteed backward compatibility and bug fixes.
+FROM ghcr.io/sitepilot/runtime:1.0
+```
 
-```bash
-ghcr.io/sitepilot/runtime:1.0
+```Dockerfile
+# Guaranteed backward compatibility and no updates.
+FROM ghcr.io/sitepilot/runtime:1.0.0
 ```
 
 ## Versions
