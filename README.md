@@ -11,7 +11,7 @@ image naming pattern in your`Dockerfile`:
 FROM ghcr.io/sitepilot/runtime:{{release-version}}
 ```
 
-The images are tagged according to Semantic Versioning (SemVer). Available releases can be found on the [releases page](/releases). For example, if you wish to customize version 1.x of the image:
+The images are tagged according to Semantic Versioning (SemVer). Available releases can be found on the [releases page](https://github.com/sitepilot/docker-runtime/releases). For example, if you wish to customize version 1.x of the image:
 
 ```Dockerfile
 # Guaranteed backward compatibility, new features and bug fixes.
